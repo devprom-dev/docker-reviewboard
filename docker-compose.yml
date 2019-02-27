@@ -2,12 +2,15 @@ version: '2'
 services:
     postgres:
         image: postgres:alpine
+        restart: always
         environment:
             - POSTGRES_USER=reviewboard
     memcached:
         image: memcached:alpine
+        restart: always
     reviewboard:
         build: ./
+        restart: always
         volumes:
             - /var/www/
         depends_on:
